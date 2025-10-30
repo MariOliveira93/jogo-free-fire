@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #include "menu.h"
@@ -7,27 +6,60 @@
  * @file main.c
  * @brief Ponto de entrada do programa
  *
- * Sistema de Inventário - Free Fire (Nível 2)
- * Comparação entre Vetor e Lista Encadeada
+ * Sistema de Inventário - Free Fire (COMPLETO)
+ * Três Níveis de Desafio
  *
- * @version 2.0
+ * @version 3.0 - FINAL
  *
- * Funcionalidades:
- * - Implementação com VETOR (lista sequencial)
- * - Implementação com LISTA ENCADEADA
- * - Ordenação (Bubble Sort)
- * - Busca Sequencial (ambas estruturas)
- * - Busca Binária (apenas vetor ordenado)
- * - Análise comparativa de desempenho
+ * NIVEL 1: Estruturas Básicas
+ * - Vetor (lista sequencial)
+ * - Lista encadeada
+ * - Operações CRUD básicas
+ *
+ * NIVEL 2: Comparação e Análise
+ * - Busca sequencial vs binária
+ * - Análise de desempenho
+ * - Ordenação com Bubble Sort
+ *
+ * NIVEL 3: Torre de Resgate (FINAL)
+ * - Múltiplos algoritmos de ordenação
+ * - Bubble Sort (por nome)
+ * - Insertion Sort (por tipo)
+ * - Selection Sort (por prioridade)
+ * - Busca binária otimizada
+ * - Medição de tempo e comparações
+ * - Análise comparativa completa
  *
  * Estruturas de dados:
- * - Struct Item: dados do item
- * - Struct No: nó da lista encadeada
- * - Vetor estático: array de 10 itens
- * - Lista dinâmica: alocação com malloc/free
+ * - Item: inventário básico
+ * - Componente: torre de resgate
+ * - No: lista encadeada
+ *
+ * Algoritmos implementados:
+ * - Busca sequencial
+ * - Busca binária
+ * - Bubble Sort
+ * - Insertion Sort
+ * - Selection Sort
  */
 
 int main() {
+    printf("\n");
+    printf("╔════════════════════════════════════════════════════════════╗\n");
+    printf("║                                                            ║\n");
+    printf("║              FREE FIRE - JOGO COMPLETO                     ║\n");
+    printf("║           ESTRUTURAS DE DADOS EM C                         ║\n");
+    printf("║                                                            ║\n");
+    printf("║  Desenvolvido como projeto educacional                    ║\n");
+    printf("║  Demonstrando conceitos fundamentais de:                  ║\n");
+    printf("║    - Estruturas de dados                                  ║\n");
+    printf("║    - Algoritmos de ordenacao                              ║\n");
+    printf("║    - Algoritmos de busca                                  ║\n");
+    printf("║    - Analise de complexidade                              ║\n");
+    printf("║                                                            ║\n");
+    printf("╚════════════════════════════════════════════════════════════╝\n");
+
     executarMenu();
+
     return 0;
 }

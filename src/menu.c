@@ -5,23 +5,33 @@
 #include "inventario_vetor.h"
 #include "inventario_lista.h"
 #include "comparador.h"
+#include "torre_resgate.h"
+#include "medidor_performance.h"
 
 /**
  * @file menu.c
- * @brief Implementação do sistema de menu interativo
+ * @brief Implementação do sistema de menu interativo - Versão 3.0 FINAL
+ *
+ * Sistema completo com três níveis de desafio e menu da Torre de Resgate
  */
+
+// ============================================================================
+// FUNÇÕES DE EXIBIÇÃO DE MENUS
+// ============================================================================
 
 void exibirMenuPrincipal() {
     printf("\n");
-    printf("╔════════════════════════════════════════╗\n");
-    printf("║     FREE FIRE - ZONA DE PERIGO         ║\n");
-    printf("║    Comparacao de Estruturas de Dados   ║\n");
-    printf("╚════════════════════════════════════════╝\n");
-    printf("  [1] Usar VETOR (Lista Sequencial)\n");
-    printf("  [2] Usar LISTA ENCADEADA\n");
-    printf("  [3] Analise Comparativa\n");
+    printf("╔════════════════════════════════════════════════════════════╗\n");
+    printf("║              FREE FIRE - ESTRUTURAS DE DADOS               ║\n");
+    printf("║                    MISSAO COMPLETA                         ║\n");
+    printf("╚════════════════════════════════════════════════════════════╝\n");
+    printf("  [1] Nivel 1: VETOR (Lista Sequencial)\n");
+    printf("  [2] Nivel 1: LISTA ENCADEADA\n");
+    printf("  [3] Nivel 2: Analise Comparativa\n");
+    printf("  [4] Nivel 3: TORRE DE RESGATE (Missao Final)\n");
+    printf("  [5] Analise de Complexidade\n");
     printf("  [0] Sair\n");
-    printf("----------------------------------------\n");
+    printf("────────────────────────────────────────────────────────────\n");
     printf("  Escolha uma opcao: ");
 }
 
@@ -55,6 +65,25 @@ void exibirMenuLista() {
     printf("----------------------------------------\n");
     printf("  Escolha uma opcao: ");
 }
+
+void exibirMenuTorreResgate() {
+    printf("\n");
+    printf("╔════════════════════════════════════════╗\n");
+    printf("║      TORRE DE RESGATE - NIVEL 3        ║\n");
+    printf("╚════════════════════════════════════════╝\n");
+    printf("  [1] Cadastrar componente\n");
+    printf("  [2] Listar componentes\n");
+    printf("  [3] Ordenar componentes\n");
+    printf("  [4] Buscar componente-chave (binaria)\n");
+    printf("  [5] Status da torre\n");
+    printf("  [0] Voltar\n");
+    printf("----------------------------------------\n");
+    printf("  Escolha uma opcao: ");
+}
+
+// ============================================================================
+// FUNÇÕES DE EXECUÇÃO DOS SUBMENUS
+// ============================================================================
 
 void executarMenuVetor() {
     int opcao;
@@ -103,17 +132,6 @@ void executarMenuVetor() {
                 if (!estaOrdenado()) {
                     printf("\n[AVISO] Execute a ordenacao primeiro!\n");
                 } else {
-                    printf("\n--- Comparacao: Sequencial vs Binaria ---\n");
-                    printf("Digite o nome do item para buscar: ");
-                    char temp[30];
-                    scanf(" %[^\n]", temp);
-
-                    int compSeq = 0, compBin = 0;
-                    printf("\nExecutando busca sequencial...\n");
-                    // Simula busca sequencial sem input
-                    printf("\nExecutando busca binaria...\n");
-                    // Simula busca binária sem input
-
                     printf("\n[INFO] Use as opcoes 4 e 6 separadamente\n");
                     printf("para comparar as buscas no mesmo item.\n");
                 }
@@ -187,6 +205,61 @@ void executarMenuLista() {
     }
 }
 
+void executarMenuTorreResgate() {
+    int opcao;
+    int executando = 1;
+
+    inicializarTorreResgate();
+
+    while (executando) {
+        exibirMenuTorreResgate();
+        scanf("%d", &opcao);
+        while (getchar() != '\n');
+
+        switch (opcao) {
+            case 1:
+                cadastrarComponente();
+                break;
+
+            case 2:
+                listarComponentes();
+                break;
+
+            case 3:
+                menuOrdenacao();
+                break;
+
+            case 4: {
+                int comp = 0;
+                buscaBinariaPorNome(&comp);
+                break;
+            }
+
+            case 5:
+                exibirStatusTorre();
+                break;
+
+            case 0:
+                printf("\n[INFO] Voltando ao menu principal...\n");
+                executando = 0;
+                break;
+
+            default:
+                printf("\n[ERRO] Opcao invalida!\n");
+                break;
+        }
+
+        if (executando && opcao >= 0 && opcao <= 5) {
+            printf("\nPressione ENTER para continuar...");
+            getchar();
+        }
+    }
+}
+
+// ============================================================================
+// FUNÇÃO PRINCIPAL DO MENU
+// ============================================================================
+
 void executarMenu() {
     int opcao;
     int executando = 1;
@@ -211,11 +284,22 @@ void executarMenu() {
                 getchar();
                 break;
 
+            case 4:
+                executarMenuTorreResgate();
+                break;
+
+            case 5:
+                exibirAnaliseComplexidade();
+                printf("\nPressione ENTER para continuar...");
+                getchar();
+                break;
+
             case 0:
                 printf("\n");
-                printf("╔════════════════════════════════════════╗\n");
-                printf("║   Obrigado por jogar! Ate a proxima!  ║\n");
-                printf("╚════════════════════════════════════════╝\n");
+                printf("╔════════════════════════════════════════════════════════════╗\n");
+                printf("║            MISSAO COMPLETA! PARABENS!                      ║\n");
+                printf("║         Obrigado por jogar! Ate a proxima!                ║\n");
+                printf("╚════════════════════════════════════════════════════════════╝\n");
                 executando = 0;
                 break;
 

@@ -1,3 +1,4 @@
+
 #ifndef MENU_H
 #define MENU_H
 
@@ -5,8 +6,8 @@
  * @file menu.h
  * @brief Interface do menu principal do sistema
  *
- * Gerencia a interação com o usuário, permitindo escolher entre
- * implementação com vetor ou lista encadeada.
+ * Gerencia a interação com o usuário através de menus hierárquicos
+ * para as três fases do jogo.
  */
 
 /**
@@ -25,6 +26,11 @@ void exibirMenuVetor();
 void exibirMenuLista();
 
 /**
+ * @brief Exibe o menu da torre de resgate (Nível 3)
+ */
+void exibirMenuTorreResgate();
+
+/**
  * @brief Executa o loop principal do programa
  */
 void executarMenu();
@@ -38,5 +44,10 @@ void executarMenuVetor();
  * @brief Executa o submenu do inventário com lista encadeada
  */
 void executarMenuLista();
+
+/**
+ * @brief Executa o submenu da torre de resgate
+ */
+void executarMenuTorreResgate();
 
 #endif // MENU_H
