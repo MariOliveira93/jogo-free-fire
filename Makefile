@@ -1,4 +1,4 @@
-# Makefile para o projeto Free Fire Inventário
+# Makefile para o projeto Free Fire Inventário - Nível 2
 # Compilador e flags
 
 CC = gcc
@@ -10,9 +10,18 @@ SRC_DIR = src
 INCLUDE_DIR = include
 BUILD_DIR = build
 
-# Arquivos fonte
-SOURCES = $(SRC_DIR)/main.c $(SRC_DIR)/inventario.c $(SRC_DIR)/menu.c
-OBJECTS = $(BUILD_DIR)/main.o $(BUILD_DIR)/inventario.o $(BUILD_DIR)/menu.o
+# Arquivos fonte e objetos
+SOURCES = $(SRC_DIR)/main.c \
+          $(SRC_DIR)/inventario_vetor.c \
+          $(SRC_DIR)/inventario_lista.c \
+          $(SRC_DIR)/comparador.c \
+          $(SRC_DIR)/menu.c
+
+OBJECTS = $(BUILD_DIR)/main.o \
+          $(BUILD_DIR)/inventario_vetor.o \
+          $(BUILD_DIR)/inventario_lista.o \
+          $(BUILD_DIR)/comparador.o \
+          $(BUILD_DIR)/menu.o
 
 # Regra principal
 all: $(BUILD_DIR) $(TARGET)
@@ -24,7 +33,10 @@ $(BUILD_DIR):
 # Compila o executável
 $(TARGET): $(OBJECTS)
 	$(CC) $(CFLAGS) -o $(TARGET) $(OBJECTS)
-	@echo "Compilacao concluida! Execute com: ./$(TARGET)"
+	@echo "=========================================="
+	@echo "Compilacao concluida com sucesso!"
+	@echo "Execute com: ./$(TARGET)"
+	@echo "=========================================="
 
 # Compila os arquivos objeto
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
@@ -39,5 +51,21 @@ clean:
 run: all
 	./$(TARGET)
 
+# Informações do projeto
+info:
+	@echo "=========================================="
+	@echo "Projeto: Free Fire - Inventario de Loot"
+	@echo "Versao: 2.0 (Nivel 2)"
+	@echo "=========================================="
+	@echo "Estruturas implementadas:"
+	@echo "  - Vetor (lista sequencial)"
+	@echo "  - Lista encadeada"
+	@echo ""
+	@echo "Algoritmos:"
+	@echo "  - Busca Sequencial"
+	@echo "  - Busca Binaria"
+	@echo "  - Ordenacao (Bubble Sort)"
+	@echo "=========================================="
+
 # Regras especiais
-.PHONY: all clean run
+.PHONY: all clean run info

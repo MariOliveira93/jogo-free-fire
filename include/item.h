@@ -1,12 +1,13 @@
+
 #ifndef ITEM_H
 #define ITEM_H
 
 /**
  * @file item.h
- * @brief Definição da estrutura de dados para itens do inventário
+ * @brief Definição das estruturas de dados para itens do inventário
  *
- * Este arquivo contém a definição da struct Item, que representa
- * cada objeto coletado pelo jogador no jogo.
+ * Este arquivo contém a definição da struct Item e da struct No
+ * para uso em lista encadeada.
  */
 
 #define MAX_NOME 30
@@ -30,5 +31,23 @@ typedef struct {
     char tipo[MAX_TIPO];
     int quantidade;
 } Item;
+
+/**
+ * @struct No
+ * @brief Representa um nó da lista encadeada
+ *
+ * Estrutura usada para implementar a mochila como lista dinâmica,
+ * permitindo inserções e remoções mais eficientes.
+ *
+ * @var No::dados
+ * Item armazenado no nó
+ *
+ * @var No::proximo
+ * Ponteiro para o próximo nó da lista
+ */
+typedef struct No {
+    Item dados;
+    struct No* proximo;
+} No;
 
 #endif // ITEM_H
